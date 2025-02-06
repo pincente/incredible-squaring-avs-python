@@ -2,7 +2,7 @@ import openai
 import os
 
 client = openai.OpenAI(
-  base_url="http://localhost:6060/v1",
+  base_url="https://api.openai.com/v1",
   # Required but ignored
   api_key=os.environ.get("OPENAI_API_KEY")
 )
