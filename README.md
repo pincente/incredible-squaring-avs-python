@@ -19,7 +19,7 @@ foundryup
 make build-contracts
 ```
 
-4. Install [MCL](https://github.com/herumi/mcl)
+4. Install [MCL](https://github.com/herumi/mcl) (it is included in the repo, so you can start with the unzip command)
 ```
 sudo apt install libgmp3-dev
 wget https://github.com/herumi/mcl/archive/refs/tags/v1.93.zip
@@ -33,9 +33,11 @@ make install
 ```
 
 5. Python3
-6. Install required modules:
+6. Install required modules, downgrade web3 and re-install eth-account to avoid bugs (TODO: Fix said bugs 🪲):
 ```
 pip install -r requirements.txt
+pip install --force web3==6.19.0
+pip install --force eth-account==0.13.5
 ```
 
 > [!TIP]
@@ -53,10 +55,16 @@ make start-anvil-chain-with-el-and-avs-deployed
 
 The above command starts a local anvil chain from a [saved state](./tests/anvil/avs-and-eigenlayer-deployed-anvil-state.json) with eigenlayer and incredible-squaring contracts already deployed (but no operator registered).
 
-Start the aggregator:
+Start the aggregator in a separate terminal:
 
 ```bash
 make start-aggregator
+```
+
+Set your OpenAI API Key in another terminal:
+
+```bash
+export OPENAI_API_KEY=sk-mysecretapikey
 ```
 
 Register the operator with eigenlayer and incredible-squaring, and then start the process:
